@@ -21,7 +21,7 @@ body {
   width: 344px;
   left: 50%;
   top: 50%;
-  background-image: url("/img/flippers.png");
+  background-image: url("../img/flippers.png");
 }
 
 .share {
