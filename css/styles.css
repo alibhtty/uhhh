@@ -10,6 +10,7 @@ body {
   background-color: #cccccc;
   overscroll-behavior-x: none;
   overscroll-behavior-y: none;
+  overscroll-behavior: contain;
 }
 
 .hand {
