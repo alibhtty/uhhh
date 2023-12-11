@@ -24,6 +24,7 @@ body {
   left: 50%;
   top: 50%;
   background-image: url("../img/flippers.png");
+  overscroll-behavior-y: none;
 }
 
 .share {
