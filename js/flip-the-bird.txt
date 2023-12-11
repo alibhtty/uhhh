@@ -1,3 +1,7 @@
+/**
+ * What, code!?
+ */
+
 // SO GLOBAL. YES!
 var damnItsTheBody = document.body;
 var totalHeight = window.innerHeight;
@@ -16,19 +20,24 @@ function App() {
 
     this.init = function() {
 
-        // Controlador para eventos de mouse
-        window.onmousemove = function(event) {
-            handleMovement(event.y);
-        }
+    	// Wait! What! Someone Should trottle this! What! No! Damn!
+		window.onmousemove = function( event ) {
 
-        // Controladores para eventos de toque
-        window.ontouchmove = function(event) {
-            handleMovement(event.touches[0].clientY);
-        }
+			var percentage = 1 - ( event.y / totalHeight );
+			var color = fadeToColor(color1, color2, percentage)
+			damnItsTheBody.style.backgroundColor = color;
 
-        window.ontouchstart = function(event) {
-            handleMovement(event.touches[0].clientY);
-        }
+			var segment = Math.floor( 24 * percentage );
+
+			// Wrangle those final frames!
+			if ( segment > 23 ) {
+    			segment = 23;
+  			} else if ( segment < 0 ) {
+  				segment = 0;
+  			}
+
+  			hand.style.backgroundPosition = ((-segment * thatWidth) + 'px 0px');
+		}
 
         // For flip phones
         if (window.DeviceOrientationEvent) {
@@ -49,7 +58,7 @@ function App() {
             totalHeight = window.innerHeight;
         }
 
-        // Load Twitter
+   		// Load Twitter
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
         // Load Facebook
@@ -60,24 +69,6 @@ function App() {
             js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-    }
-
-
-    function handleMovement(position) {
-        var percentage = 1 - ( position / totalHeight );
-        var color = fadeToColor(color1, color2, percentage)
-        damnItsTheBody.style.backgroundColor = color;
-    
-        var segment = Math.floor( 24 * percentage );
-    
-        // Wrangle those final frames!
-        if ( segment > 23 ) {
-            segment = 23;
-        } else if ( segment < 0 ) {
-            segment = 0;
-        }
-    
-        hand.style.backgroundPosition = ((-segment * thatWidth) + 'px 0px');
     }
 
     // Stack overflow is amazing! Smart! Kapow!
@@ -95,6 +86,26 @@ function App() {
 	    return 'rgb(' + newColor + ')';
 	}
 
+    // lel
+    function mobileTilt(data){
+        if(mobileOrigin === undefined){
+            mobileOrigin = data[0];
+        }
+        var percentage = ((mobileOrigin - data[0]) + 8) / 16;
+        var color = fadeToColor(color1, color2, percentage)
+        damnItsTheBody.style.backgroundColor = color;
+
+        var segment = Math.floor( 24 * percentage );
+
+        // Wrangle those final frames!
+        if ( segment > 23 ) {
+            segment = 23;
+        } else if ( segment < 0 ) {
+            segment = 0;
+        }
+
+        hand.style.backgroundPosition = ((-segment * thatWidth) + 'px 0px');
+    }
 }
 
 var app = new App();

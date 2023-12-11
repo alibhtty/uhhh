@@ -8,6 +8,7 @@ html, body {
 
 body {
   background-color: #cccccc;
+  overscroll-behavior-y: none;
 }
 
 .hand {
@@ -29,11 +30,22 @@ body {
   position: fixed;
   bottom: 15px;
   right: 15px;
+  border-radius: 25px;
 }
 
 .twitter-share-button {
   vertical-align: bottom;
   margin-right: 8px;
+}
+.ab {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: aliceblue;
+  text-decoration: none;
+  background-color: black;
+  padding: 8px 20px;
+  vertical-align: bottom;
+  /* margin-right: 8px; */
 }
 
 @media (max-width: 600px) {
