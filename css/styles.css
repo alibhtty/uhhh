@@ -11,6 +11,10 @@ body {
   overscroll-behavior-x: none;
   overscroll-behavior-y: none;
   overscroll-behavior: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .hand {
